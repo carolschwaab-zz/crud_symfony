@@ -1,0 +1,24 @@
+{{ form_start(form) }}
+    {{form_row(form.title)}}
+    {{form_row(form.price)}}
+    {{form_row(form.description)}}
+    {{form_row(form.stock)}}
+    <h3>Images</h3>
+    <ul style="list-style: none;" class="images" data-prototype="{{ form_widget(form.images.vars.prototype)|e('html_attr') }}">
+        {% for image in form.images %}
+            <li class="imageForm">
+                {{ form_widget(form) }}
+            </li>
+        {% endfor %}
+    </ul>
+    <h3>Tags</h3>
+    <ul style="list-style: none;" class="tags" data-prototype="{{ form_widget(form.tags.vars.prototype)|e('html_attr') }}">
+        {% for tag in form.tags %}
+           <li>{{ form_row(tag.name) }}</li>
+        {% endfor %}
+    </ul>
+    {#{{ form_widget(form) }} #}
+   
+
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
